@@ -1,5 +1,7 @@
 package com.example.Spring_Boot_Rest_API;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,11 @@ public class MyController {
 	
 	@Autowired
 	StudentService ss;
+	
+	@GetMapping("/students")
+	public List<Student> getAll(){
+		return ss.getallstudents();
+	}
 	
 	@PostMapping("register")
 	public ResponseEntity<?> registration(@RequestBody Student s){
