@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+
 @RestController
 @CrossOrigin("*")
 public class MyController {
@@ -24,8 +26,10 @@ public class MyController {
 	StudentService ss;
 	
 	@GetMapping("/students")
-	public List<Student> getAll(){
-		return ss.getallstudents();
+	public List<StudentDto> getAll(){
+		Student s = new Student() ;
+		
+		return StudentDto.change( Arrays.asList(s,s));
 	}
 	
 	@PostMapping("register")
